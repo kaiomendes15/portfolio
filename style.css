@@ -4,6 +4,7 @@
 html {
     margin: 0;
     padding: 0;
+    scroll-behavior: smooth;
 }
 body {
   margin: 0;
@@ -134,6 +135,7 @@ h1, h2, h3, h4, h5, p {
     /* Gradients */
     --gradient-card: linear-gradient(135deg, hsl(var(--card)), hsl(var(--card-hover)));
     --gradient-hero: linear-gradient(135deg, hsl(205 38% 13%) 0%, hsl(205 35% 18%) 50%, hsl(10 90% 65% / 0.1) 100%);
+    --gradient-section: linear-gradient(135deg, hsl(205 38% 13%), hsl(205 35% 18%))
     
     /* Shadows */
     --shadow-hero: 0 10px 40px hsl(205 50% 10% / 0.4);
@@ -161,6 +163,26 @@ h1, h2, h3, h4, h5, p {
 @keyframes fade-in-up {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slide-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes glow-pulse {
@@ -359,6 +381,195 @@ body {
     color: hsl(var(--primary));
 }
 
+/* --- Seção Sobre Mim --- */
+.about-section {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+    background-image: var(--gradient-section);
+}
+
+.about-wrapper {
+    max-width: 98rem; /* 896px */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Cabeçalho da Seção */
+.section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+    animation: fade-in 0.5s ease-out;
+}
+.section-title {
+    font-size: 2.25rem;
+    font-weight: 700;
+    color: hsl(var(--foreground));
+    margin-bottom: 1.5rem;
+}
+.section-subtitle {
+    font-size: 1.25rem;
+    color: hsl(var(--muted-foreground));
+    max-width: 42rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Grid de Conteúdo (Jornada e Conquistas) */
+.about-content-grid {
+    display: grid;
+    gap: 3rem;
+    align-items: center;
+    margin-bottom: 4rem;
+}
+.about-heading {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: hsl(var(--foreground));
+}
+.align-boxes {
+    height: 5rem;
+}
+.about-journey {
+    animation: slide-in-left 0.5s ease-out;
+}
+.about-achievements {
+    animation: fade-in-up 0.5s ease-out;
+}
+.about-journey, .about-achievements {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+.journey-text-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.journey-text {
+    color: hsl(var(--muted-foreground));
+}
+
+
+.achievements-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.achievement-card {
+    background-color: hsl(var(--card));
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-card);
+    transition: var(--transition-smooth);
+}
+.achievement-card:hover {
+    box-shadow: var(--shadow-glow);
+}
+.achievement-title {
+    font-weight: 600;
+    color: hsl(var(--primary));
+    margin-bottom: 0.5rem;
+}
+.achievement-description {
+    color: hsl(var(--muted-foreground));
+    font-size: 0.875rem; /* 14px */
+}
+
+/* Grid de Skills */
+.skills-grid {
+  /* Alterado de 'grid' para 'flex' em coluna */
+  display: flex;
+  flex-direction: row;
+  gap: 1.3rem; /* Mantém o espaçamento original entre os cards */
+  animation: fade-in 0.5s ease-out;
+  margin-bottom: 167px;
+}
+.skill-card {
+    background-color: hsl(var(--card));
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-card);
+    transition: var(--transition-smooth);
+    animation: fade-in-up 0.5s ease-out both; /* 'both' mantém o estado final */
+    width: 180px;
+}
+.skill-card:hover {
+    box-shadow: var(--shadow-glow);
+    transform: translateY(-8px);
+}
+.skill-card-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
+}
+.skill-icon-wrapper {
+    width: 4rem;
+    height: 4rem;
+    background-color: hsl(var(--primary) / 0.1);
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition-smooth);
+}
+.skill-card:hover .skill-icon-wrapper {
+    background-color: hsl(var(--primary) / 0.2);
+}
+.skill-icon-wrapper svg {
+    color: hsl(var(--primary));
+}
+.skill-title {
+    font-weight: 600;
+    color: hsl(var(--foreground));
+    margin-bottom: 0.5rem;
+}
+.skill-description {
+    color: hsl(var(--muted-foreground));
+    font-size: 0.875rem; /* 14px */
+    margin-bottom: 0.75rem;
+}
+.skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+    justify-content: center;
+}
+.skill-tag {
+    font-size: 0.75rem; /* 12px */
+    background-color: hsl(var(--primary) / 0.1);
+    color: hsl(var(--primary));
+    padding: 0.25rem 0.5rem;
+    border-radius: 9999px;
+}
+
+/* Animação Escalonada para Skills */
+.skill-card:nth-child(1) { animation-delay: 0s; }
+.skill-card:nth-child(2) { animation-delay: 0.1s; }
+.skill-card:nth-child(3) { animation-delay: 0.2s; }
+.skill-card:nth-child(4) { animation-delay: 0.3s; }
+
+/* --- Responsividade --- */
+@media (min-width: 768px) { /* md: */
+    .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media (min-width: 1024px) { /* lg: */
+    .section-title {
+        font-size: 3rem;
+    }
+    .about-content-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .skills-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+
 /* --- Responsividade (Desktop) --- */
 @media (min-width: 1024px) {
     .container {
@@ -385,5 +596,133 @@ body {
     }
     .subtitle {
         font-size: 1.875rem; /* 30px */
+    }
+
+    .about-title {
+    font-size: 3rem;       /* 48px, da classe lg:text-5xl */
+    line-height: 1;
+  }
+  .about-infos-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* --- Grid de Projetos --- */
+.projects-grid {
+    display: grid;
+    gap: 1.5rem;
+    max-width: 98rem;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+}
+
+/* --- Card de Projeto --- */
+.project-card {
+    background-color: hsl(var(--card));
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-card);
+    transition: var(--transition-smooth);
+    overflow: hidden;
+    height: 100%; /* Garante que os cards tenham a mesma altura no grid */
+    display: flex;
+    flex-direction: column;
+}
+.project-card:hover {
+    box-shadow: var(--shadow-glow);
+    transform: translateY(-8px);
+}
+.card-body {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    flex-grow: 1; /* Faz o corpo do card crescer para preencher o espaço */
+}
+
+/* Conteúdo do Card */
+.project-header {
+    flex-grow: 1; /* Empurra os links para o final do card */
+}
+.project-title {
+    font-size: 1.25rem; /* 20px */
+    font-weight: 600;
+    color: hsl(var(--foreground));
+    transition: color 0.3s ease;
+}
+.project-card:hover .project-title {
+    color: hsl(var(--primary));
+}
+.project-description {
+    color: hsl(var(--muted-foreground));
+    margin-top: 0.5rem;
+    font-size: 0.875rem; /* 14px */
+    line-height: 1.6;
+}
+
+/* Tags de Tecnologia */
+.project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+.tag {
+    font-size: 0.75rem; /* 12px */
+    background-color: hsl(var(--primary) / 0.1);
+    color: hsl(var(--primary));
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-weight: 500;
+}
+
+/* Links/Botões do Projeto */
+.project-links {
+    display: flex;
+    gap: 0.75rem;
+    padding-top: 0.5rem;
+}
+
+/* --- Estilos de Botão Pequeno --- */
+.btn-sm {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-size: 0.875rem; /* 14px */
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    transition: var(--transition-smooth);
+}
+/* Variante 'default' */
+.btn-default {
+    background-color: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+}
+.btn-default:hover {
+    background-color: hsl(var(--primary-glow));
+}
+/* A variante 'outline' já deve existir no seu CSS, mas caso não: */
+.btn-outline {
+    background-color: transparent;
+    color: hsl(var(--foreground));
+    border: 1px solid hsl(var(--border));
+}
+.btn-outline:hover {
+    border-color: hsl(var(--primary));
+    color: hsl(var(--primary));
+    background-color: hsl(var(--primary) / 0.1);
+}
+
+/* --- Responsividade --- */
+@media (min-width: 1024px) { /* lg: */
+    .projects-grid {
+        /* Define um grid de 2 colunas */
+        grid-template-columns: repeat(2, 1fr);
+    }
+    /* Estilo para o card em destaque */
+    .project-card--featured {
+        grid-column: span 2; /* Faz o card ocupar 2 colunas */
     }
 }
