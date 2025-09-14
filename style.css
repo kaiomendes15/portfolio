@@ -8,6 +8,7 @@ html {
 }
 body {
   margin: 0;
+  margin-bottom: 3rem;
 }
 
 h1, h2, h3, h4, h5, p {
@@ -146,6 +147,58 @@ h1, h2, h3, h4, h5, p {
     
     /* Z-index layers */
     --z-card: 10;
+}
+
+.light-theme {
+  /* ================== TEMA CLARO ================== */
+
+  /* Paleta primária */
+  /* Fundo principal quase branco, com um leve toque de azul */
+  --background: 205 20% 97%;
+  /* Texto principal escuro, usando a cor do fundo do tema escuro */
+  --foreground: 205 38% 13%;
+  --cor-textos: #121212;
+
+  /* Sistema de cards */
+  /* Card branco puro para se destacar do fundo */
+  --card: 0 0% 100%;
+  --card-foreground: 205 38% 13%;
+  /* Hover do card fica um pouco mais escuro/azulado */
+  --card-hover: 205 20% 95%;
+
+  /* Destaque primário */
+  /* Cor primária um pouco mais escura para melhor contraste em fundo claro */
+  --primary: 10 90% 55%;
+  --primary-foreground: 0 0% 100%;
+  /* Brilho mais claro e sutil */
+  --primary-glow: 10 90% 65%;
+
+  /* Elementos com menos destaque */
+  /* Cor de texto secundário, um cinza azulado */
+  --muted-foreground: 205 20% 45%;
+
+  /* Cores de utilidade */
+  /* Borda sutil, um pouco mais escura que o fundo */
+  --border: 205 20% 90%;
+
+  /* Sombras */
+  /* Sombra mais suave para o tema claro */
+  --shadow-hero: 0 10px 40px hsl(205 40% 50% / 0.1);
+  
+  /* ================================================ */
+  /* As variáveis abaixo geralmente não precisam de alteração */
+
+  /* Gradientes (atualizam automaticamente com as novas cores) */
+  --gradient-card: linear-gradient(135deg, hsl(var(--card)), hsl(var(--card-hover)));
+  --gradient-hero: linear-gradient(135deg, hsl(var(--background)) 0%, hsl(var(--card-hover)) 50%, hsl(var(--primary) / 0.1) 100%);
+  --gradient-section: linear-gradient(135deg, hsl(var(--background)), hsl(var(--card)));
+
+  /* Transições & Raio */
+  --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --radius-lg: 16px;
+
+  /* Z-index */
+  --z-card: 10;
 }
 
 /* --- Animações --- */
@@ -725,4 +778,14 @@ body {
     .project-card--featured {
         grid-column: span 2; /* Faz o card ocupar 2 colunas */
     }
+}
+
+.themeToggle {
+    background-color: transparent;
+    border: none;
+    transition: 600ms ease-in-out;
+}
+
+.themeToggle:hover {
+    transform: scale(1.1);
 }
